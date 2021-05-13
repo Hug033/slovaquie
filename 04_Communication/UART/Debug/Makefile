@@ -38,6 +38,7 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../Button.cpp \
+../Buzzer.cpp \
 ../DHT.cpp \
 ../Display.cpp \
 ../Led.cpp \
@@ -53,6 +54,7 @@ ASM_SRCS +=
 
 OBJS +=  \
 Button.o \
+Buzzer.o \
 DHT.o \
 Display.o \
 Led.o \
@@ -61,6 +63,7 @@ Uart.o
 
 OBJS_AS_ARGS +=  \
 Button.o \
+Buzzer.o \
 DHT.o \
 Display.o \
 Led.o \
@@ -69,6 +72,7 @@ Uart.o
 
 C_DEPS +=  \
 Button.d \
+Buzzer.d \
 DHT.d \
 Display.d \
 Led.d \
@@ -77,6 +81,7 @@ Uart.d
 
 C_DEPS_AS_ARGS +=  \
 Button.d \
+Buzzer.d \
 DHT.d \
 Display.d \
 Led.d \
@@ -98,6 +103,13 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU C Compiler
 ./Button.o: .././Button.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega328p" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./Buzzer.o: .././Buzzer.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega328p" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

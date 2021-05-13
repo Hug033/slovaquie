@@ -4,6 +4,8 @@
 
 Button.cpp
 
+Buzzer.cpp
+
 DHT.cpp
 
 Display.cpp

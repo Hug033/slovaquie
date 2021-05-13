@@ -162,6 +162,12 @@
     <Compile Include="Button.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Buzzer.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Buzzer.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="DHT.cpp">
       <SubType>compile</SubType>
     </Compile>
