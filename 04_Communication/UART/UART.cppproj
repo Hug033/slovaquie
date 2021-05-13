@@ -153,6 +153,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Adc.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Adc.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Board.h">
       <SubType>compile</SubType>
     </Compile>
@@ -193,6 +199,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Uart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Ultrasonic.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Ultrasonic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="UvSensor.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="UvSensor.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

@@ -78,6 +78,10 @@
 #define HTX PORTD1
 #define HRX PORTD0
 
+
+#define TRIG PORTC2
+#define ECHO PORTC3
+
 #define BAUDERATE 115200   //9600
 #define UBRR_VALUE ((F_CPU / (BAUDERATE * 8L)) -1)  //   8....51  ,  16.....25  12.....12
 /************************************************************/
