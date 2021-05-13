@@ -130,30 +130,29 @@ void DHT::printValues()
 	
 }
 
-double DHT::getTemp(void)
+uint8_t DHT::getTemp(void)
 {
 	uint32_t x = getValue();
-	uint8_t pom;
+	
+	if(x != 0)
+	{
+		uint32_t y = x;
+		y = y >>8;
+		return (uint8_t)y;
+	}
+	return 0;
+};
+
+
+uint8_t DHT::getHum(void)
+{
+	uint32_t x = getValue();
 	
 	if(x != 0)
 	{
 		uint32_t y = x;
 		y = y >> 24;
-		pom = (uint8_t)y;
-		printf("Humidity : %d.",pom);
-		y = x;
-		y = y >> 16;
-		pom = (uint8_t)y;
-		printf("%d %%\r\n",pom);
-
-		y = x;
-		y = y >>8;
-		pom = (uint8_t)y;
-		printf("Temp     : %d.",pom);
-		pom = (uint8_t)x;
-		printf("%d degrees Celsius\r\n",pom);
-		double total = (uint8_t)y + (uint8_t)x / 10;
-		return total;
+		return (uint8_t)y;
 	}
 	return 0;
 };

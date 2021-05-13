@@ -24,7 +24,8 @@ class DHT
 	~DHT();
 	uint32_t getValue(void);
 	void printValues();
-	double getTemp(void);
+	uint8_t getTemp(void);
+	uint8_t getHum(void);
 	protected:
 	private:
 	DHT(const DHT& c);

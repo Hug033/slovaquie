@@ -1,8 +1,8 @@
 /*
 * Uvod2.cpp
 *
-* Created: 21.1.2020 13:19:25
-* Author : Lukas
+* Created: 13.5.2020 21:22:25
+* Author : hugob
 */
 
 #include "Led.h"
@@ -17,43 +17,44 @@ int main(void)
 	rgb.set(1,0,0); // Led rouge
 
 	Button btn;
-	Display dsp;		
-	Uart serial;		
+	Display dsp;
+	Uart serial;
 	DHT dht;
 	
-
-	printf ("COUCOU :) \r\n");
+	dsp.show(0); // Set display to default
+	printf ("Initialize :) \r\n");
 	printf("AT+CWMODE=1\r\n");
 	_delay_ms(200);
-	printf("AT+CWJAP=\"reseau_partage\",\"123unedeuxtrois\"\r\n");
+	printf("AT+CWJAP=\"Livebox-49F0\",\"*lescarottessontcuites*\"\r\n");
 	_delay_ms(6000);
 	printf("AT+CIPMUX=1\r\n");
-	_delay_ms(200);	
+	_delay_ms(200);
 	rgb.set(0,1,0); // Led verte
-		
+	
 	while (1)
 	{
-	//printf(""+dht.getTemp());
-	//dht.printValues();
-	//printf("%d\r\n", dht.getTemp());
-		_delay_ms(200);
+		_delay_ms(200);	
+		while(!btn.isPressed()){}
+		rgb.set(1,0,0);	// The led indicates that the module is busy
 		
-		while(!btn.isPressed()){}	
-		printf("button is pressed");
+		dsp.show(1); // Set display for first step(humidity)
+		uint8_t hum = dht.getHum(); // Get temperature
 		printf("AT+CIPSTART=0,\"TCP\",\"api.thingspeak.com\",80\r\n");
 		_delay_ms(200);
 		printf("AT+CIPSEND=0,49\r\n");
 		_delay_ms(200);
-		printf("GET /update?api_key=8TWTRTQNRX8KX7EU&field1=120\n\r");
-
-		printf("Should be entry");
-		rgb.set(0,1,1);
-// 		char str1[] = "GET /update?api_key=8TWTRTQNRX8KX7EU&field1=120\n\r";
-// 		printf("AT+CIPSEND=0,%d\r\n", (unsigned)strlen(str1));
-// 		_delay_ms(2000);
-// 		printf("GET /update?api_key=8TWTRTQNRX8KX7EU&field1=120\n\r");
-		//printf("" + dht.getTemp());
+		printf("GET /update?api_key=7IQV2A0JQYCOPDL0&field2=%d\n\r", hum); // Send to Thingspeak API
+		
+		_delay_ms(2000);		
+		dsp.show(2); // Set display for second step(temperature)
+		uint8_t temp = dht.getTemp(); // Get temperature
+		printf("AT+CIPSTART=0,\"TCP\",\"api.thingspeak.com\",80\r\n");
+		_delay_ms(200);
+		printf("AT+CIPSEND=0,49\r\n");
+		_delay_ms(200);
+		printf("GET /update?api_key=7IQV2A0JQYCOPDL0&field1=%d\n\r", temp); // Send to Thingspeak API 		
+		
+		rgb.set(0,1,0); // The led indicates that the module is ready
+		dsp.show(0); // Set display to default	
 	}
-}
-
-;
+};
