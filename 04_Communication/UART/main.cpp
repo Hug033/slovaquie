@@ -25,9 +25,12 @@ int main(void)
 	
 	dsp.show(0); // Set display to default
 	printf ("Initialize :) \r\n");
+	//printf ("*********************************\r\n");
 	printf("AT+CWMODE=1\r\n");
 	_delay_ms(200);
-	printf("AT+CWJAP=\"Livebox-49F0\",\"*lescarottessontcuites*\"\r\n");
+	//printf("AT+CWJAP=\"Livebox-49F0\",\"*lescarottessontcuites*\"\r\n");
+	printf("AT+CWJAP=\"reseau_partage\",\"123unedeuxtrois\"\r\n");
+
 	_delay_ms(6000);
 	printf("AT+CIPMUX=1\r\n");
 	_delay_ms(200);
@@ -39,28 +42,43 @@ int main(void)
 		
 		//_delay_ms(60000);	
 		while(!btn.isPressed()){}
-		rgb.set(1,0,0);	// The led indicates that the module is busy
+		rgb.set(1,1,0);	// yellow The led indicates that the module is sending first request
 		
+		/// FIRST REQUEST
 		dsp.show(1); // Set display for first step(humidity)
-		uint8_t hum = dht.getHum(); // Get temperature
+		uint8_t hum = dht.getHum(); // Get humidity
 		printf("AT+CIPSTART=0,\"TCP\",\"api.thingspeak.com\",80\r\n");
 		_delay_ms(200);
 		printf("AT+CIPSEND=0,49\r\n");
 		_delay_ms(200);
 		printf("GET /update?api_key=7IQV2A0JQYCOPDL0&field2=%d\n\r", hum); // Send to Thingspeak API
 		
-		_delay_ms(3000);		
+				/// FIRST REQUEST END
+
+		printf("First request end\r\n");
+		_delay_ms(3000);
+		
+		
+				/// SECOND REQUEST
+		printf("Second request start\r\n");
+		rgb.set(1,0,1);	// purple The led indicates that the module is sending second request
+		buzz.setBuzz(500);
+		printf("AT+CIPMUX=1\r\n");
+		_delay_ms(1000);
 		dsp.show(2); // Set display for second step(temperature)
 		uint8_t temp = dht.getTemp(); // Get temperature
-		printf("AT+CIPMUX=1\r\n");
-		_delay_ms(200);
+		
+		_delay_ms(1000);
 		printf("AT+CIPSTART=0,\"TCP\",\"api.thingspeak.com\",80\r\n");
 		_delay_ms(200);
 		printf("AT+CIPSEND=0,49\r\n");
 		_delay_ms(200);
 		printf("GET /update?api_key=7IQV2A0JQYCOPDL0&field1=%d\n\r", temp); // Send to Thingspeak API 		
 		
-		rgb.set(0,1,0); // The led indicates that the module is ready
+		printf("Second request end");
+		_delay_ms(3000);
+		
+		rgb.set(0,0,1); // blue when it's done
 		dsp.show(0); // Set display to default	
 	}
 };

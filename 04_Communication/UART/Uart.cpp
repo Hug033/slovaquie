@@ -29,8 +29,8 @@ Uart::~Uart()
 
 int Uart::sendByte(char data, FILE *stream)
 {
-	if(data == '\n')
-		sendByte('\r',0);	
+// 	if(data == '\n')
+// 		sendByte('\r',0);	
 	while(!(UCSR0A & (1<<UDRE0))){};
 	UDR0 = data;
 	return 0;
