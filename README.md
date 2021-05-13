@@ -1,1 +1,1 @@
-COUCOUo
+IoT Project Slovakia
