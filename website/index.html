@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .cardSpecial {
+            height: 26rem !important;
+        }
+        body {
+            color: #343a40;
+        }
+    </style>
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-robot d-inline-block align-top mt-1 mr-2" width="30" height="30"></i>
+            IoT Dashboard
+        </a>
+    </nav>
+    <h1 class="text-center mt-5">
+        IoT Dashboard
+    </h1>
+    <div class="text-center font-weight-bold">
+        <img src="slovakia.png" width="50"/>
+         -
+        <img src="french.png" width="50"/>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <div class="card mb-3 cardSpecial">
+                    <iframe title="Example2" height="250" style="border: none" class="card-img-top"
+                        src="https://thingspeak.com/channels/1388122/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&xaxis=Test&yaxis=%C2%B0C">
+                    </iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">Ambient Temperature <i class="fas fa-thermometer-three-quarters"></i>
+                        </h5>
+                        <p class="card-text">You can find the temperature history of your module, here !</p>
+                        <p class="card-text"><small class="text-muted">Temperature Sensor</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="card mb-3 cardSpecial">
+                    <iframe height="250" style="border: none" class="card-img-top"
+                        src="https://thingspeak.com/channels/1388122/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15">
+                    </iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">Ambient Humidity <i class="fas fa-water"></i></i>
+                        </h5>
+                        <p class="card-text">You can find the humidity history of your module, here !</p>
+                        <p class="card-text"><small class="text-muted">Humidity Sensor</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
