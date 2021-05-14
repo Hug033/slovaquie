@@ -32,7 +32,6 @@ int main(void)
 	//printf ("*********************************\r\n");
 	printf("AT+CWMODE=1\r\n");
 	_delay_ms(200);
-	//printf("AT+CWJAP=\"Livebox-49F0\",\"*lescarottessontcuites*\"\r\n");
 	printf("AT+CWJAP=\"reseau_partage\",\"123unedeuxtrois\"\r\n");
 
 	_delay_ms(6000);
